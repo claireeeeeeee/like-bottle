@@ -47,6 +47,23 @@ const SUPABASE_ANON_KEY = "PASTE_YOUR_SUPABASE_ANON_KEY_HERE";
 
 `kisskissme`
 
+## 大类（可折叠分组）
+
+编辑模式里用 `#` 开头的一行写大类名，下面的瓶子都属于这个大类：
+
+```
+# Part 1
+人物 A
+人物 B
+
+# Part 2
+人物 C
+```
+
+玩家页面每个大类是一个可折叠区块，第一个默认展开；点「这部分完成，下一部分」会收起当前、展开下一个。不写 `#` 就是原来的普通列表。
+
+已经上线的旧数据库需要先在 Supabase SQL Editor 运行一次 `supabase_add_categories.sql`。
+
 ## 改暗号
 
 以后如果想改，在 Supabase SQL Editor 运行：
