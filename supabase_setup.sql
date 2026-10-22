@@ -60,7 +60,7 @@ create or replace function public.editor_replace_bottles(p_code text,p_names tex
 returns jsonb language plpgsql security definer set search_path=public as $$
 begin
   if not public.check_editor_code(p_code) then return jsonb_build_object('ok',false); end if;
-  if not exists(select 1 from unnest(p_names) x where trim(x)<>'') then raise exception '至少需要一个瓶子'; end if;
+  if not exists(select 1 from unnest(p_names) x where trim(x)<>'') then raise exception '至少需要一个人物'; end if;
   delete from public.bottles where true;
   insert into public.bottles(name,category,sort_order)
   select trim(n),coalesce(trim(c),''),ord::int from unnest(p_names,p_categories) with ordinality as t(n,c,ord) where trim(n)<>'';
