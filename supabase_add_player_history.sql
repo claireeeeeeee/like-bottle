@@ -7,3 +7,6 @@ returns jsonb language sql security definer set search_path=public as $$
 $$;
 revoke all on function public.player_get_latest_submission(text) from public;
 grant execute on function public.player_get_latest_submission(text) to anon, authenticated;
+
+-- 让 Supabase 立刻识别新函数
+notify pgrst, 'reload schema';
